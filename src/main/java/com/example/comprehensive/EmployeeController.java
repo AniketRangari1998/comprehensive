@@ -38,7 +38,14 @@ public class EmployeeController {
 	public ResponseEntity<List<Employee>> getAllEmployee() {
 		return ResponseEntity.ok(es.getAllEmployee());
 	}
-
+	
+	@GetMapping("/employees/des")
+	public ResponseEntity<List<Employee>> getEmployeeBydes(){
+		return ResponseEntity.ok(es.getEmployeeByDesOrderOfSalary());
+	}
+	
+	
+	
 	@DeleteMapping("/employees/{id}")
 	public String deleteEmployee(@PathVariable int id) {
 		return es.deleteEmployee(id);

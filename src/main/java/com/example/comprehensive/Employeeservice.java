@@ -3,6 +3,7 @@ package com.example.comprehensive;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.util.PropertySource.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import com.example.comprehensive.exceptionhandler.EmployeeAlreadyExist;
 import com.example.comprehensive.exceptionhandler.UserNotFoundException;
 
 @Service
-public class Employeeservice extends Comparator{
+public class Employeeservice {
 
 	private static final int List = 0;
 	@Autowired
@@ -30,6 +31,19 @@ public class Employeeservice extends Comparator{
 
 	public List<Employee> getAllEmployee() {
 		return repository.findAll();
+	}
+	
+	public List<Employee> getEmployeeInDes(){
+		List<Employee> list = repository.findAll();
+		return list;
+	}
+	
+	public List<Employee> getEmployeeByDesOrderOfSalary(){
+		List<Employee> s = repository.findAll();
+		
+		Collections.sort( s , (o1,o2) -> (o2.getSalary()==o1.getSalary()) ? ( o1.getName().compareTo(o2.getName()) )  :  (o2.getSalary()-o1.getSalary()) );
+		
+		return s;	
 	}
 
 	public Employee getById(int id) throws UserNotFoundException {
