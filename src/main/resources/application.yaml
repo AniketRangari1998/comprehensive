@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST:aniket-db.mysql.database.azure.com}:3306/${DB_NAME:nidea}?useSSL=true&requireSSL=false
-    username: ${DB_USERNAME:azureuser@aniket-db}
+    url: jdbc:mysql://${DB_HOST:aniketdb.mysql.database.azure.com}:3306/${DB_NAME:nidea}?useSSL=true&requireSSL=false
+    username: ${DB_USERNAME:azureuser@aniketdb}
     password: ${DB_PASSWORD:aniket@12345}
     
   jpa:
